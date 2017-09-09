@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body ng-app="app">
+	<div style="display: none;" ng-style="{display: isShow}">
+		<div class="app-header">
+			<div class="container">
+				<div class="pull-right">
+					<span>欢迎回来</span>
+					<span ng-bind="username"></span>
+					<a href="action/logout.php">退出</a>
+				</div>
+				<h1>学院后台管理系统</h1>
+			</div>
+		</div>
+		<div class="app-nav" ng-controller="navCtrl">
+			<ul>
+				<li ng-repeat="item in list" class="nav">
+					<h3 ng-bind="item.title" ng-click="toggleList($event)"></h3>
+					<ul style="display:none">
+						<li ng-repeat="childItem in item.children">
+							<a ng-href="{{childItem.url}}" ng-bind="childItem.title"></a>
+						</li>
+					</ul>	
+				</li>	
+			</ul>
+		</div>
+	</div>
+	<!-- 定义容器 -->
+	<div class="app-main" ui-view></div>
+<!-- 引入js -->
+<script type="text/javascript" src="js/jquery-1.12.2.js"></script>
+<script type="text/javascript" src="js/angular2.js"></script>
+<script type="text/javascript" src="js/angular-ui-router2.js"></script>
+<script type="text/javascript" src="js/index.js"></script>	
+<script type="text/javascript" src="js/wangEditor.js"></script>
+</body>
+</html>
